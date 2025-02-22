@@ -59,6 +59,31 @@ Replace `{path_to_headless-agents-mcp}` with the absolute path to your installat
 
 Once configured, you can call Headless Agents directly from Claude Desktop using the `call_agent` tool. Here's an example:
 
+
+
+## Available Tools
+
+### call_agent
+
+Calls a Headless Agent with a request.
+
+Parameters:
+- `agent_id` (string): The ID of the agent to call
+- `request` (string): The request message to send to the agent
+- `conversation_id` (string, optional): Optional conversation ID for continuing conversations
+
+Example usage:
+```typescript
+const result = await client.callTool({
+  name: "call_agent",
+  arguments: {
+    agent_id: "agent-id",
+    request: "Hey! How are you?",
+    conversation_id: "optional-conversation-id"
+  }
+});
+```
+JSON Example:
 ```javascript
 // Example tool call
 {
@@ -67,12 +92,7 @@ Once configured, you can call Headless Agents directly from Claude Desktop using
     "conversation_id": "optional-conversation-id"
 }
 ```
-
-### Parameters
-
-- `agent_id` (required): The ID of the Headless Agent you want to call
-- `request` (required): The message or request you want to send to the agent
-- `conversation_id` (optional): ID for maintaining conversation context across multiple calls
+```
 
 ## Error Handling
 
